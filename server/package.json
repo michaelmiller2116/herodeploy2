@@ -1,0 +1,16 @@
+{
+  "name": "version2",
+  "version": "1.0.0",
+  "description": "Deploy full stack applications",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Galvanize",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
