@@ -3,6 +3,7 @@ const cors = require("cors")
 const data = require("./data/instructors")
 
 const app = express()
+
 app.use(cors())
 
 function findById(data, id) {
