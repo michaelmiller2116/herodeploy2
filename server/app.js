@@ -1,18 +1,34 @@
-const express = require('express')
+const express = require("express")
+const cors = require("cors")
+const data = require("./data/instructors")
+
+function findById(data, id) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].id == id) {
+      return data[i]
+    }
+  }
+  return null
+}
+
 const app = express()
-const port = process.env.PORT || 3000
-const fixtures = require('./data/fixtures')
+app.use(cors())
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
+app.get("/", (request, response) => {
+  response.json({ data })
 })
 
-app.get('/yeast', (req, res, next) => {
-  res.send(JSON.stringify(fixtures.yeast))
+app.get("/:id", (request, response) => {
+  var record = findById(data, request.params.id)
+  if (!record) {
+    response.status(404).json({
+      error: {
+        message: "No record found!"
+      }
+    })
+  } else {
+    response.json({ data: record })
+  }
 })
 
-app.listen(port, () => {
-  console.log('listening here ', port)
-})
+app.listen(3000)
