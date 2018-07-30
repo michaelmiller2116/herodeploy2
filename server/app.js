@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const data = require("./data/instructors")
+const app = express()
 
 function findById(data, id) {
   for (let i = 0; i < data.length; i++) {
@@ -10,8 +11,6 @@ function findById(data, id) {
   }
   return null
 }
-
-const app = express()
 
 app.use(cors())
 
