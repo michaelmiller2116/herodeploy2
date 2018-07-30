@@ -12,6 +12,7 @@ function findById(data, id) {
 }
 
 const app = express()
+
 app.use(cors())
 
 app.get("/", (request, response) => {
